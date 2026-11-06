@@ -52,7 +52,7 @@ graph TD;
 *   **Tactical Autonomy Modes:**
     *   **HITL (Human-In-The-Loop):** System locks targets and halts execution pending explicit manual commander authorization.
     *   **HOTL (Human-On-The-Loop):** AI Autopilot engages, dynamically overriding manual systems to neutralize all mapped threats instantaneously based on the vision pipeline.
-
+---
 ## 🚀 Deployment & Ignition Protocol
 
 Due to the decoupled nature of the GPU processing and the UI dashboard, the system must be brought online in a specific ignition sequence.
@@ -85,7 +85,7 @@ Due to the decoupled nature of the GPU processing and the UI dashboard, the syst
    npm run dev
    ```
 3. Ensure port `5173` (Vite) and `8765` (WebSocket) are exposed to the public network, then launch the `localhost` URL in your browser.
-
+---
 ## 🛡️ Operational Directives
 
 By default, the architecture strictly enforces a **"Manual-by-Default"** security posture. Upon boot, the weaponized swarm system initializes in *Standby* mode. The C2 dashboard will log `[HOLD] Target locked. Awaiting manual commander authorization.` until the operator explicitly engages the AI Autopilot or executes a manual strike.
