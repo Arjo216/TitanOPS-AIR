@@ -36,6 +36,7 @@ graph TD;
     WE --> NX[NetworkX Spatial Graph];
     NX --> |A* Heuristic Search| UI;
 ```
+```
 ### 1. The Cloud Neural Node (Vision Pipeline)
 *   **Hardware:** Deployed on an NVIDIA T4 GPU via Google Colab.
 *   **Inference:** Utilizes a PyTorch-backed YOLO11 Convolutional Neural Network (CNN) to process continuous `640x360` video telemetry.
@@ -53,6 +54,7 @@ graph TD;
     *   **HITL (Human-In-The-Loop):** System locks targets and halts execution pending explicit manual commander authorization.
     *   **HOTL (Human-On-The-Loop):** AI Autopilot engages, dynamically overriding manual systems to neutralize all mapped threats instantaneously based on the vision pipeline.
 ```[cite: 12]
+
 ## 🚀 Deployment & Ignition Protocol
 
 Due to the decoupled nature of the GPU processing and the UI dashboard, the system must be brought online in a specific ignition sequence.
