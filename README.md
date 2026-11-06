@@ -52,7 +52,6 @@ graph TD;
 *   **Tactical Autonomy Modes:**
     *   **HITL (Human-In-The-Loop):** System locks targets and halts execution pending explicit manual commander authorization.
     *   **HOTL (Human-On-The-Loop):** AI Autopilot engages, dynamically overriding manual systems to neutralize all mapped threats instantaneously based on the vision pipeline.
-[cite: 12]
 
 ## 🚀 Deployment & Ignition Protocol
 
