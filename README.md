@@ -36,23 +36,23 @@ graph TD;
     WE --> NX[NetworkX Spatial Graph];
     NX --> |A* Heuristic Search| UI;
 ```
-```
-1. The Cloud Neural Node (Vision Pipeline)
-2. Hardware: Deployed on an NVIDIA T4 GPU via Google Colab.
-Inference: Utilizes a PyTorch-backed YOLO11 Convolutional Neural Network (CNN) to process continuous 640x360 video telemetry.
-Data Extraction: The model extracts bounding box geometries (x1, y1, x2, y2) and probabilistic confidence scores, executing parallel matrix multiplications to identify targets with minimal latency.
-1. The Python World Engine (Applied AI & Algorithmic Routing)
-2. Pixel-to-Grid Projection: Translates YOLO pixel coordinates into real-world geospatial grids using NetworkX.
-Dynamic Topology: Continuously destructs and reconstructs graph nodes around moving targets to calculate a "lethal blast radius" and no-fly zones.
-Heuristic Navigation: Implements the A* (A-Star) search algorithm to calculate the optimal extraction or interception routes for Ground/Air Vehicles (UGV/UAV) in real-time.
-1. The Overwatch C2 Dashboard (Frontend)
-2. Framework: Built on React and Vite for sub-millisecond DOM repaints.
-CSS Grid Optimization: Employs absolute-positioned feeds decoupled from CSS Grid physics to prevent layout blowout during heavy video frame rendering.
-Tactical Autonomy Modes:
-HITL (Human-In-The-Loop): System locks targets and halts execution pending explicit manual commander authorization.
-HOTL (Human-On-The-Loop): AI Autopilot engages, dynamically overriding manual systems to neutralize all mapped threats instantaneously based on the vision pipeline.
+### 1. The Cloud Neural Node (Vision Pipeline)
+*   **Hardware:** Deployed on an NVIDIA T4 GPU via Google Colab.
+*   **Inference:** Utilizes a PyTorch-backed YOLO11 Convolutional Neural Network (CNN) to process continuous `640x360` video telemetry.
+*   **Data Extraction:** The model extracts bounding box geometries `(x1, y1, x2, y2)` and probabilistic confidence scores, executing parallel matrix multiplications to identify targets with minimal latency.
 
-```
+### 2. The Python World Engine (Applied AI & Algorithmic Routing)
+*   **Pixel-to-Grid Projection:** Translates YOLO pixel coordinates into real-world geospatial grids using `NetworkX`.
+*   **Dynamic Topology:** Continuously destructs and reconstructs graph nodes around moving targets to calculate a "lethal blast radius" and no-fly zones.
+*   **Heuristic Navigation:** Implements the A* (A-Star) search algorithm to calculate the optimal extraction or interception routes for Ground/Air Vehicles (UGV/UAV) in real-time.
+
+### 3. The Overwatch C2 Dashboard (Frontend)
+*   **Framework:** Built on React and Vite for sub-millisecond DOM repaints.
+*   **CSS Grid Optimization:** Employs absolute-positioned feeds decoupled from CSS Grid physics to prevent layout blowout during heavy video frame rendering.
+*   **Tactical Autonomy Modes:**
+    *   **HITL (Human-In-The-Loop):** System locks targets and halts execution pending explicit manual commander authorization.
+    *   **HOTL (Human-On-The-Loop):** AI Autopilot engages, dynamically overriding manual systems to neutralize all mapped threats instantaneously based on the vision pipeline.
+```[cite: 12]
 ## 🚀 Deployment & Ignition Protocol
 
 Due to the decoupled nature of the GPU processing and the UI dashboard, the system must be brought online in a specific ignition sequence.
