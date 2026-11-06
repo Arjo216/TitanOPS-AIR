@@ -35,3 +35,61 @@ graph TD;
     
     WE --> NX[NetworkX Spatial Graph];
     NX --> |A* Heuristic Search| UI;
+```
+```
+1. The Cloud Neural Node (Vision Pipeline)
+2. Hardware: Deployed on an NVIDIA T4 GPU via Google Colab.
+Inference: Utilizes a PyTorch-backed YOLO11 Convolutional Neural Network (CNN) to process continuous 640x360 video telemetry.
+Data Extraction: The model extracts bounding box geometries (x1, y1, x2, y2) and probabilistic confidence scores, executing parallel matrix multiplications to identify targets with minimal latency.
+1. The Python World Engine (Applied AI & Algorithmic Routing)
+2. Pixel-to-Grid Projection: Translates YOLO pixel coordinates into real-world geospatial grids using NetworkX.
+Dynamic Topology: Continuously destructs and reconstructs graph nodes around moving targets to calculate a "lethal blast radius" and no-fly zones.
+Heuristic Navigation: Implements the A* (A-Star) search algorithm to calculate the optimal extraction or interception routes for Ground/Air Vehicles (UGV/UAV) in real-time.
+1. The Overwatch C2 Dashboard (Frontend)
+2. Framework: Built on React and Vite for sub-millisecond DOM repaints.
+CSS Grid Optimization: Employs absolute-positioned feeds decoupled from CSS Grid physics to prevent layout blowout during heavy video frame rendering.
+Tactical Autonomy Modes:
+HITL (Human-In-The-Loop): System locks targets and halts execution pending explicit manual commander authorization.
+HOTL (Human-On-The-Loop): AI Autopilot engages, dynamically overriding manual systems to neutralize all mapped threats instantaneously based on the vision pipeline.
+
+```
+## 🚀 Deployment & Ignition Protocol
+
+Due to the decoupled nature of the GPU processing and the UI dashboard, the system must be brought online in a specific ignition sequence.
+
+### Phase 1: Ignite the Neural Brain (Cloud)
+1. Launch the dedicated Google Colab notebook (`brain/colab_inference.ipynb`).
+2. Attach a T4 GPU and execute all cells to initialize the PyTorch environment.
+3. Extract the generated `ngrok-free.app` URL from the output log.
+
+### Phase 2: Configure the World Engine (Backend)
+1. Clone the repository to your local machine or cloud development environment.
+2. Update the `COLAB_API_URL` variable in `world/network_bridge.py` with the fresh Ngrok tunnel address.
+3. Install dependencies:
+   ```bash
+   pip install websockets requests networkx matplotlib opencv-python-headless
+   ```
+4. Boot the WebSocket bridge:
+   ```bash
+   python world/network_bridge.py
+   ```
+
+### Phase 3: Launch the C2 Nexus (Frontend)
+1. Open a secondary terminal and navigate to the UI directory:
+   ```bash
+   cd titanops-ui
+   ```
+2. Install Node dependencies and boot the Vite server:
+   ```bash
+   npm install
+   npm run dev
+   ```
+3. Ensure port `5173` (Vite) and `8765` (WebSocket) are exposed to the public network, then launch the `localhost` URL in your browser.
+
+## 🛡️ Operational Directives
+
+By default, the architecture strictly enforces a **"Manual-by-Default"** security posture. Upon boot, the weaponized swarm system initializes in *Standby* mode. The C2 dashboard will log `[HOLD] Target locked. Awaiting manual commander authorization.` until the operator explicitly engages the AI Autopilot or executes a manual strike.
+
+## 📄 License
+
+This project is licensed under the **Apache License 2.0**. See the [LICENSE](LICENSE) file for details.
